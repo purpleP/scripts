@@ -7,8 +7,6 @@ from subprocess import check_output
 
 _, file, pattern = sys.argv
 index_version = check_output(['git', 'show', f':{file}'])
-
-
 with open(file, 'rb+') as f:
     current = bytearray(f.read())
     m = SequenceMatcher(a=index_version, b=current)
