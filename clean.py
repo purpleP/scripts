@@ -5,11 +5,11 @@ from difflib import SequenceMatcher
 from subprocess import check_output
 
 
-files, pattern = sys.argv[1:-1], bytes(sys.argv[-1], 'utf8')
+_, *files, revision, pattern = sys.argv, bytes(sys.argv[-1], 'utf8')
 
 for file in files:
     try:
-        index_version = check_output(['git', 'show', f':{file}'])
+        index_version = check_output(['git', 'show', f'{revision}:{file}'])
     except:
         index_version = ''
     with open(file, 'rb+') as f:
