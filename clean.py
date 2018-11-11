@@ -5,7 +5,7 @@ from difflib import SequenceMatcher
 from subprocess import check_output
 
 
-_, *files, revision, pattern = sys.argv, bytes(sys.argv[-1], 'utf8')
+(*files, revision), pattern = sys.argv[1:-1], bytes(sys.argv[-1], 'utf8')
 
 for file in files:
     try:
